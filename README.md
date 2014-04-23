@@ -139,7 +139,4 @@ sh ./dbdump_to_csv.sh
 
 ### Coming Soon ###
 
-  * Create dynamic visualizations of the data in the database inside a webapp.
-  * Provide Python scripts that use [pandas](http://github.com/pydata/pandas) to parse/clean the dumped CSV files and perform analyses on the data.
-
-
+  * Display data as a report using BIRT and BIRT Viewer Toolkit in a Webapp.
