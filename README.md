@@ -140,3 +140,4 @@ sh ./dbdump_to_csv.sh
 ### Coming Soon ###
 
   * Display data as a report using BIRT and BIRT Viewer Toolkit in a Webapp.
+  * PHP Script to upload to Hadoop (testing on Mint)
