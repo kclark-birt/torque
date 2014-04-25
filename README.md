@@ -2,9 +2,9 @@ This repo contains a set of scripts and instructions to setup a minimally functi
 
 ### SETUP ###
 
-Hadoop
-Apache Webserver
-PHP
+  * Hadoop
+  * Apache Webserver
+  * PHP
 
 Everything was tested on Mint 16, and PHP 5.3.  I'm sure other configs will work you'd just need to know how to set them up :)
 
@@ -40,7 +40,7 @@ Settings -> Data Logging & Upload -> Webserver URL
 
 Enter the URL to your **torque-json.php** script and press `OK`. Test that it works by clicking `Test settings` and you should see a success message like the image on the right:
 
-<div align="center" style="padding-bottom:15px;"><a href="https://storage.googleapis.com/torque_github/torque_webserver_url.png" target="_blank"><img src="https://storage.googleapis.com/torque_github/torque_webserver_url.png" width="49%" align="left"></img></a><a href="https://storage.googleapis.com/torque_github/torque_test_passed.png" target="_blank"><img src="https://storage.googleapis.com/torque_github/torque_test_passed.png" width="49%" align="right"></img></a></div>
+<div align="center" style="padding-bottom:15px;"><img src="http://i63.photobucket.com/albums/h148/kristopher_clark1/Work/Screenshot_2014-04-25-10-08-47_zps642b4f91.png" width="49%" align="left"></img><img src="https://storage.googleapis.com/torque_github/torque_test_passed.png" width="49%" align="right"></img></div>
 
 The final thing you'll want to do before going for a drive is to check the appropriate boxes on the `Data Logging & Upload` page under the `REALTIME WEB UPLOAD` section. Personally, I have both **Upload to webserver** and **Only when ODB connected** checked.
 
