@@ -49,4 +49,4 @@ At this point, you should be all setup. The next time you connect to Torque in y
 ### Coming Soon ###
   * Visualizations and data comparison using BIRT 4.3.2 and BIRT Viewer Toolkit
   * MapReduce of torque.json
-  * Screenshots of webapp using BIRT 4.3.2 and BIRT Viewer Toolkit
+  * Screenshots of webapp using BIRT 4.3.2 and BIRT Viewer Toolkit (Both Hadoop from the JSON and MySQL as seen in orginal project I forked this from)
