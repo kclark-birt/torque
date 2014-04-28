@@ -8,7 +8,7 @@ This repo contains a set of scripts and instructions to setup a minimally functi
 
 Everything was tested on Mint 16, and PHP 5.3.  I'm sure other configs will work you'd just need to know how to set them up :)
 
-### CREATE THE "EMPTY" JSON ###
+### CREATE THE EMPTY JSON FILE ###
 
 For this to work right you'll need to create an empty JSON file.  Create a file called torque.json in your document root.  For testing I've chmoded the file to 777 to make sure the script can write to it.
 
@@ -21,7 +21,7 @@ I've placed this in the root of apache at
 ###torque-json.php###
 Copy over torque-json.php to apache.  I also put this in my document root.  By default the script will grab all of the parameters, even the null ones.  Feel free to make any changes and commit them, I'm a Java guy and by no means a PHP expert.
 
-###Create the Hive DB###
+### CREATE THE HIVE DB ###
 For this I'm using Hive 0.14.0 along with [hive-json-serde](https://code.google.com/p/hive-json-serde/wiki/GettingStarted).  First you need to create the table.  I've provided my HQL inside of [HQL for Torque DB](HQL%20for%20Torque%20DB.txt).  Open up hive and paste this HQL in there making the required changes for your build.
 
 Next you'll need to tell Hive where to find the SerDe jar using a command like this
@@ -30,7 +30,7 @@ Next you'll need to tell Hive where to find the SerDe jar using a command like t
 ADD JAR /path/to/jar/hive-json-serde-0.2.jar
 ```
 
-### Configure Torque Settings ###
+### CONFIGURE THE TORQUE SETTINGS ###
 
 
 To use your database/server with Torque, open the app on your phone and navigate to:
@@ -47,7 +47,7 @@ The final thing you'll want to do before going for a drive is to check the appro
 
 At this point, you should be all setup. The next time you connect to Torque in your car, data will begin saving all your data to torque.json
 
-### Load the JSON into the Hive table ###
+### IMPORT JSON INTO HIVE ###
 Now that you've got data coming in and the table setup you just need to issue one command from Hive to load the JSON.
 
 ```
