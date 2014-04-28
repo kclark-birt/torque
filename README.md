@@ -21,6 +21,15 @@ I've placed this in the root of apache at
 ###torque-json.php###
 Copy over torque-json.php to apache.  I also put this in my document root.  By default the script will grab all of the parameters, even the null ones.  Feel free to make any changes and commit them, I'm a Java guy and by no means a PHP expert.
 
+###Create the Hive DB###
+For this I'm using Hive 0.14.0 along with [hive-json-serde](https://code.google.com/p/hive-json-serde/wiki/GettingStarted).  First you need to create the table.  I've provided my HQL inside of [HQL for Torque DB](HQL%20for%20Torque%20DB.txt).  Open up hive and paste this HQL in there making the required changes for your build.
+
+Next you'll need to tell Hive where to find the SerDe jar using a command like this
+
+```
+ADD JAR /path/to/jar/hive-json-serde-0.2.jar
+```
+
 ### Configure Torque Settings ###
 
 
@@ -38,7 +47,21 @@ The final thing you'll want to do before going for a drive is to check the appro
 
 At this point, you should be all setup. The next time you connect to Torque in your car, data will begin saving all your data to torque.json
 
+### Load the JSON into the Hive table ###
+Now that you've got data coming in and the table setup you just need to issue one command from Hive to load the JSON.
+
+```
+LOAD DATA LOCAL INPATH '/var/www/torque.json' OVERWRITE INTO TABLE torque_db;
+```
+
+And then test it with some HQL like this
+
+```
+select eml from torque_db;
+```
+
 ### Coming Soon ###
+  * Auto import the JSON into Hive
   * Visualizations and data comparison using BIRT 4.3.2 and BIRT Viewer Toolkit
   * MapReduce of torque.json
   * Screenshots of webapp using BIRT 4.3.2 and BIRT Viewer Toolkit (Both Hadoop from the JSON and MySQL as seen in orginal project I forked this from)
