@@ -10,21 +10,13 @@ Everything was tested on Mint 16, and PHP 5.3.  I'm sure other configs will work
 
 ### CREATE THE "EMPTY" JSON ###
 
-For this to work right you'll need to create an empty JSON file.  The trick is to have open and closing brackets in it otherwise it won't work.  The script is setup to deserialize the current JSON, seriealize the incoming parameters, add the two, and then save it back.  If you don't have this in your json file it won't work.
-
-### torque.json ###
-
-```
-[]
-```
+For this to work right you'll need to create an empty JSON file.  Create a file called torque.json in your document root.  For testing I've chmoded the file to 777 to make sure the script can write to it.
 
 I've placed this in the root of apache at 
 
 ```
 /var/www
 ```
-
-Next you'll need to set the permissions.  For testing I set torque.json to 777 to make sure the script wouldn't have any problems writing to the file.
 
 ###torque-json.php###
 Copy over torque-json.php to apache.  I also put this in my document root.  By default the script will grab all of the parameters, even the null ones.  Feel free to make any changes and commit them, I'm a Java guy and by no means a PHP expert.
