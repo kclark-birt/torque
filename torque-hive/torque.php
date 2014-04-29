@@ -20,15 +20,6 @@ $transport = new TSocket('localhost', 10000);
 $protocol = new TBinaryProtocol($transport);
 $client = new ThriftHiveClient($protocol);
 $transport->open();
- 
-//show all tables
-$client->execute('SHOW TABLES');
-$tables = $client->fetchAll();
-
-//Upload data
-$hql_data = json_encode($_GET);
-
-$hql_values = array();
 
 $file = "/mnt/ramdisk/torque.json";
 $fh = fopen($file, 'w') or die("can't open file");
