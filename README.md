@@ -8,18 +8,39 @@ This repo contains a set of scripts and instructions to setup a minimally functi
 
 Everything was tested on Mint 16, and PHP 5.3.  I'm sure other configs will work you'd just need to know how to set them up :)
 
+### CREATE THE TEMP FILE SYSETM ###
+Hive doesn't support INSERT INTO like other database system's do.  To get around this and save unnecessary IO, I created a temp file system 
+in memory.  Since we only need to store one JSON object at a time it doesn't need to be very large.
+
+First create the folder
+
+```
+sudo mkdir /mnt/ramdisk
+```
+
+Then change the ownership
+
+```
+sudo chown hduser:hadoop /mnt/ramdisk
+```
+
+Finally, mount the filesystem
+
+```
+sudo mount -t ramfs -o size=20m ramfs /mnt/ramdisk
+```
+
 ### CREATE THE EMPTY JSON FILE ###
 
 For this to work right you'll need to create an empty JSON file.  Create a file called torque.json in your document root.  For testing I've chmoded the file to 777 to make sure the script can write to it.
 
-I've placed this in the root of apache at 
-
 ```
-/var/www
+touch /mnt/ramdisk/torque.json
+chmod 777 /mnt/ramdisk/torque.json
 ```
 
-###torque-json.php###
-Copy over torque-json.php to apache.  I also put this in my document root.  By default the script will grab all of the parameters, even the null ones.  Feel free to make any changes and commit them, I'm a Java guy and by no means a PHP expert.
+### torque-json.php ###
+First copy the folder thrift from this project to your document root.  Then copy torque-json.php to the document root.
 
 ### CREATE THE HIVE DB ###
 For this I'm using Hive 0.14.0 along with [hive-json-serde](https://code.google.com/p/hive-json-serde/wiki/GettingStarted).  First you need to create the table.  I've provided my HQL inside of [HQL for Torque DB](HQL%20for%20Torque%20DB.txt).  Open up hive and paste this HQL in there making the required changes for your build.
@@ -28,6 +49,13 @@ Next you'll need to tell Hive where to find the SerDe jar using a command like t
 
 ```
 ADD JAR /path/to/jar/hive-json-serde-0.2.jar
+```
+
+### Start hiveserver2 ###
+Before torque-json.php can write to the hive table you'll need to start hiveserver2.
+
+```
+hiveserver2 --service hiveserver
 ```
 
 ### CONFIGURE THE TORQUE SETTINGS ###
