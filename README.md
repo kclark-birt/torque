@@ -42,7 +42,7 @@ chmod 777 /mnt/ramdisk/torque.json
 ### torque-json.php ###
 First copy the folder thrift from this project to your document root.  Then copy torque-json.php to the document root.
 
-### CREATE THE HIVE DB ###
+### CREATE THE HIVE TABLE ###
 For this I'm using Hive 0.14.0 along with [hive-json-serde](https://code.google.com/p/hive-json-serde/wiki/GettingStarted).  First you need to create the table.  I've provided my HQL inside of [HQL for Torque DB](HQL%20for%20Torque%20DB.txt).  Open up hive and paste this HQL in there making the required changes for your build.
 
 Next you'll need to tell Hive where to find the SerDe jar using a command like this
